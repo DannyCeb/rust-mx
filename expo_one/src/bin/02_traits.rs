@@ -1,3 +1,8 @@
+/*
+    * Ejemplo de como los traits pueden hacernos la vida más fácil
+
+*/
+
 // region: PL
 
 enum LenguajeDeProgramacion {
