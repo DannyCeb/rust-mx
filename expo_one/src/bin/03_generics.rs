@@ -1,7 +1,8 @@
 use std::fmt::Display;
 
-fn generic_func<T: Display>(una_cosa: T) {
-    println!("Parametro: {}", una_cosa)
+fn generic_func<T: Display>(una_cosa: T) -> String {
+    // Cualquier variable que implemente Display, se generará el metodo to_string
+    una_cosa.to_string()
 }
 
 // Struct sencilla que almacena cualquier dato que pueda ser clonado
@@ -38,6 +39,8 @@ impl MyStruct<&str> {
     }
 }
 
+//  TODO!  Generar implementación para f64
+
 fn main() {
     let g1 = MyStruct::new(7);
     let g2 = MyStruct::new("Rust");
@@ -48,9 +51,6 @@ fn main() {
 
     // una funcion generica puede aceptar referencias y variable a la vez
     // CUIDADO con el ownership
-    generic_func(g1);
-    generic_func(&g2);
-
-    //g1.cualquier_cosa;
-    g2.cualquier_cosa;
+    println!("{}", generic_func(g1));
+    println!("{}", generic_func(&g2));
 }

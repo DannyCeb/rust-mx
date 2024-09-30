@@ -34,10 +34,11 @@ fn main() {
             //
             // Fin del scope 'c de por lo tanto variable_3 es eliminada de memoria
         }
+        // TODO! crear referencias rodeando esta instrucción
         *ref_variable_1 += 1;
         //
         //
-        println!("Valor de variable 1 desde scope 'b: {}", ref_variable_1);
+        println!("Valor de variable 1 desde scope 'b: {}", variable_1);
         //
         // Fin del scope 'b de por lo tanto variable_2 y ref_variable1 son eliminadas de memoria
     }

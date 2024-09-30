@@ -13,7 +13,7 @@ struct ParteImportante<'a> {
 
 fn main() {
     let texto = String::from("Rust es un lenguaje, de programación claro....");
-    let primera_parte = texto.split(',').next().expect("Could not find a ','");
+    let primera_parte = texto.split(',').next().expect("No pude encontrar una ','");
     let i = ParteImportante {
         parte: primera_parte,
     };

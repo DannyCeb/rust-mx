@@ -93,8 +93,8 @@ impl Describir for Computadora {
 
 fn main() {
     let l1 = Libro::new(
-        "Cracking the coding interview".to_string(), // **
-        String::from("Gayle LaakMann McDowell"),     // **
+        "Cracking the coding interview".to_string(), // ** Display
+        String::from("Gayle LaakMann McDowell"),
         696,
     );
 
