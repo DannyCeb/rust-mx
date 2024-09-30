@@ -6,6 +6,7 @@ fn str_mas_largo<'a>(x: &'a str, y: &'a str) -> &'a str {
     }
 }
 
+#[derive(Debug)]
 struct ParteImportante<'a> {
     parte: &'a str,
 }
@@ -16,4 +17,24 @@ fn main() {
     let i = ParteImportante {
         parte: primera_parte,
     };
+
+    println!("i: {:?}", i.parte);
+
+    {
+        // 'a
+
+        let un_str = "un texto";
+
+        {
+            // 'b
+            let otro_str = "otro texto";
+
+            println!(
+                "El str más largo entre \"{}\" y \"{}\" es: \"{}\"",
+                un_str,
+                otro_str,
+                str_mas_largo(un_str, otro_str)
+            );
+        }
+    }
 }
