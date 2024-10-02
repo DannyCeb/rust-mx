@@ -117,5 +117,10 @@ mod tests {
 
         // valida que mi_hashmap verifique si está vacio o no
         assert_eq!(true, mi_hashmap.is_empty());
+        /*
+        for l in 0..10 {
+            let aux = Persona::new("dummy", l);
+            mi_hashmap.insert(&aux, aux.to_string());
+        }*/
     }
 }

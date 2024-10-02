@@ -91,6 +91,9 @@ impl Describir for Computadora {
 
 // endregion: Computadoras
 
+// TODO!
+// Hacer que los tests funcionen
+
 fn main() {
     let l1 = Libro::new(
         "Cracking the coding interview".to_string(), // ** Display
@@ -109,3 +112,23 @@ fn main() {
 
     println!("{}", c1.describirse());
 }
+
+/*
+#[cfg(test)]
+mod tests {
+    use crate::Describir;
+
+    #[test]
+    fn describe_vector() {
+        assert_eq!(
+            "soy un vecor con las siguientes caracteristicas:\nLongitud: 0\nCapacidad: 0",
+            Vec::<i32>::new().describirse()
+        );
+    }
+
+    #[test]
+    fn describir_i32() {
+        assert_eq!("Mi valor es: 0", 0.describirse());
+    }
+}
+    */
