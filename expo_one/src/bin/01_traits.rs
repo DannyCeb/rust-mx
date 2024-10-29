@@ -1,3 +1,5 @@
+use std::fmt::format;
+
 // region: traits
 trait Describir {
     fn describirse(&self) -> String;
@@ -113,7 +115,22 @@ fn main() {
     println!("{}", c1.describirse());
 }
 
-/*
+impl Describir for Vec<i32> {
+    fn describirse(&self) -> String {
+        format!(
+            "soy un vecor con las siguientes caracteristicas:\nLongitud: {}\nCapacidad: {}",
+            self.len(),
+            self.capacity(),
+        )
+    }
+}
+
+impl Describir for i32 {
+    fn describirse(&self) -> String {
+        format!("Mi valor es: {}", self)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::Describir;
@@ -131,4 +148,3 @@ mod tests {
         assert_eq!("Mi valor es: 0", 0.describirse());
     }
 }
-    */

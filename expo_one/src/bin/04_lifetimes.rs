@@ -35,7 +35,11 @@ fn main() {
             // Fin del scope 'c de por lo tanto variable_3 es eliminada de memoria
         }
         // TODO! crear referencias rodeando esta instrucción
+
         *ref_variable_1 += 1;
+
+        let r2 = &variable_1;
+
         //
         //
         println!("Valor de variable 1 desde scope 'b: {}", variable_1);

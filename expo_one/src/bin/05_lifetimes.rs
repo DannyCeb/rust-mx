@@ -14,7 +14,7 @@ struct ParteImportante<'a> {
 fn main() {
     let texto = String::from("Rust es un lenguaje, de programación claro....");
     let primera_parte = texto.split(',').next().expect("No pude encontrar una ','");
-    let i = ParteImportante {
+    let i: ParteImportante<'_> = ParteImportante {
         parte: primera_parte,
     };
 
@@ -33,7 +33,7 @@ fn main() {
                 "El str más largo entre \"{}\" y \"{}\" es: \"{}\"",
                 un_str,
                 otro_str,
-                str_mas_largo(un_str, otro_str)
+                str_mas_largo(un_str, otro_str) 
             );
         }
     }

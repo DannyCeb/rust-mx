@@ -1,4 +1,4 @@
-use std::fmt::Display;
+use std::{fmt::Display, hash::Hash};
 
 fn generic_func<T: Display>(una_cosa: T) -> String {
     // Cualquier variable que implemente Display, se generará el metodo to_string
@@ -13,7 +13,7 @@ struct MyStruct<T: Clone> {
 // los traits se van acumulando
 // T Debe implementar Display para que mi struct lo haga
 // T debe implementar clone porque así lo requiere Generica
-impl<T: Display + Clone> Display for MyStruct<T> {
+impl<T: Display + Clone > Display for MyStruct<T> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         write!(f, "Implementación del trait Display para mi estructura generica que muestra cualquier cosa: {}", self.cualquier_cosa)
     }
@@ -43,7 +43,7 @@ impl MyStruct<&str> {
 
 fn main() {
     let g1 = MyStruct::new(7);
-    let g2 = MyStruct::new("Rust");
+    let g2 = MyStruct::new("Rust"); 
 
     println!("Cualquier cosa dentro de g1: {}", g1.metodo1());
     println!("Cualquier cosa dentro de g2: {}", g2.metodo1());
