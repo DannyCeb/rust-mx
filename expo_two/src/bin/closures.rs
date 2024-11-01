@@ -12,20 +12,33 @@ fn main() {
      *
      */
 
-    let x = 1;
+    // Ejemplo de FnOnce
 
-    // el compilador infiere los tipos: | val: i32| -> i32 { val + x };
-    let closure = |val| val + x;
+    let my_string = String::from("Hello, FnOnce!");
 
-    println!("{}", closure(7));
+    // Closure FnOnce que toma ownership de `my_string`
+    let consume_string = || my_string.max("7".to_string());
 
-    let mut v = vec![1, 2, 3];
+    // Llamar al closure, moviendo `my_string` dentro del closure
+    println!("Fn Once: {}", consume_string());
+    //consume_string();
 
-    let mut losure_inner_mut = |nx| {
-        v.push(nx);
-        println!("{:?}", v)
-    };
+    // Ejemplo de FnMut
+    let mut value = 0;
+    let mut add_to_value = |x| value += x;
+    add_to_value(1);
+    add_to_value(2);
+    println!("FnMut: {}", value); // FnMut: 3
 
-    losure_inner_mut(15);
-    println!("{:?}", v);
+    // Ejemplo de Fn
+    let calculate_sum = |a: i32, b: i32| a + b;
+    let result = calculate_sum(5, 6);
+    println!("Fn: {}", result); // Fn: 11
+    println!("Fn: {}", calculate_sum(1, 2));
+
+    // Ejemplo de Fn con ownership
+    let consume_string = |s: String| println!("FnOnce: {}", s);
+    let my_string = String::from("Hello, FnOnce!");
+    consume_string(my_string); // Ok, toma el ownership
+                               // consume_string(my_string); // Error, my_string ya ha sido movido
 }
