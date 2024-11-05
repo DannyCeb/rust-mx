@@ -17,7 +17,8 @@ fn main() {
     let my_string = String::from("Hello, FnOnce!");
 
     // Closure FnOnce que toma ownership de `my_string`
-    let consume_string = || my_string.max("7".to_string());
+    let consume_string =
+        || my_string.max("¡¡¡¡¡Un String considerablemente más largo!!!!".to_string());
 
     // Llamar al closure, moviendo `my_string` dentro del closure
     println!("Fn Once: {}", consume_string());
