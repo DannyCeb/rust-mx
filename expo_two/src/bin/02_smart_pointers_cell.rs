@@ -6,12 +6,13 @@ fn main() {
     println!("String antes de mutar: {}\n", &valor);
 
     let cell_valor = Cell::new(valor);
+    let ref_ayuda = &cell_valor;
 
     println!("Creación:");
 
     println!(
         "Direccion del apuntador: {:p}\nDireccion a la que apunta: {:p}",
-        &cell_valor.as_ptr(),
+        ref_ayuda,
         cell_valor.as_ptr()
     );
 
@@ -22,7 +23,7 @@ fn main() {
     println!("\nExtracción:");
     println!(
         "Direccion del apuntador: {:p}\nDireccion a la que apunta: {:p}",
-        &cell_valor.as_ptr(),
+        ref_ayuda,
         cell_valor.as_ptr()
     );
 
@@ -31,7 +32,7 @@ fn main() {
     println!("\nRemplazo:");
     println!(
         "Direccion del apuntador: {:p}\nDireccion a la que apunta: {:p}",
-        &cell_valor.as_ptr(),
+        ref_ayuda,
         cell_valor.as_ptr()
     );
     println!("\nResultado: {:?}", cell_valor.take());
