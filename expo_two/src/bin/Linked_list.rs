@@ -217,6 +217,17 @@ impl Display for MyDoubleLinkedList {
     }
 }
 
+impl FromIterator<i32> for MyDoubleLinkedList {
+    fn from_iter<T: IntoIterator<Item = i32>>(iter: T) -> Self {
+        let mut res_list = MyDoubleLinkedList::default();
+        for l in iter {
+            res_list.push_back(l);
+        }
+
+        res_list
+    }
+}
+
 fn main() {
     let mut my_ll = MyDoubleLinkedList::default();
     println!("{}", my_ll);
@@ -228,6 +239,10 @@ fn main() {
     my_ll.push_front(0);
     my_ll.push_front(0);
     my_ll.push_back(3);
+
+    println!("{}", my_ll);
+
+    let mut my_ll: MyDoubleLinkedList = my_ll.into_iter().map(|item| item * 10).collect();
 
     println!("{}", my_ll);
 
