@@ -98,6 +98,58 @@ impl MyDoubleLinkedList {
                 Some(Rc::downgrade(&new_node.clone().unwrap()));
 
             self.first = new_node.clone();
+            self.iterator_aux = self.first.clone();
+        }
+    }
+
+    fn remove_last(&mut self) -> Option<i32> {
+        if self.is_empty() {
+            None
+        } else if self.has_one_element() {
+            let element = self.first.clone().unwrap().as_ref().borrow().item;
+
+            self.first = None;
+            self.last = None;
+            self.iterator_aux = None;
+
+            Some(element)
+        } else {
+            let element = self.last.clone().unwrap().as_ref().borrow().item;
+
+            let aux_weak_ptr = self
+                .last
+                .clone()
+                .unwrap()
+                .as_ref()
+                .borrow()
+                .previous
+                .clone();
+
+            self.last = Weak::upgrade(&aux_weak_ptr.unwrap());
+
+            self.last.clone().unwrap().as_ref().borrow_mut().next = None;
+
+            Some(element)
+        }
+    }
+
+    fn remove_first(&mut self) -> Option<i32> {
+        if self.is_empty() {
+            None
+        } else if self.has_one_element() {
+            let element = self.first.clone().unwrap().as_ref().borrow().item;
+
+            self.first = None;
+            self.last = None;
+            self.iterator_aux = None;
+
+            Some(element)
+        } else {
+            let element = self.first.clone().unwrap().as_ref().borrow().item;
+            self.first = self.first.clone().unwrap().as_ref().borrow().next.clone();
+            self.first.clone().unwrap().as_ref().borrow_mut().previous = None;
+            self.iterator_aux = self.first.clone();
+            Some(element)
         }
     }
 }
@@ -178,6 +230,11 @@ fn main() {
     my_ll.push_back(3);
 
     println!("{}", my_ll);
-    println!("{}", my_ll);
+
+    my_ll.remove_first();
+    my_ll.remove_last();
+    my_ll.remove_first();
+    my_ll.remove_last();
+
     println!("{}", my_ll);
 }
