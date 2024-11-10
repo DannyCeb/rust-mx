@@ -328,58 +328,103 @@ impl FromIterator<i32> for MyDoubleLinkedList {
 }
 
 fn main() {
-    let mut my_ll = MyDoubleLinkedList::default();
-    println!("{}", my_ll);
+    // Crear una lista vacía
+    let mut list = MyDoubleLinkedList::new();
 
-    my_ll.push_back(0);
-    my_ll.push_back(1);
-    my_ll.push_back(2);
-    my_ll.push_back(3);
-    my_ll.push_back(4);
-    my_ll.push_back(5);
+    // Insertar elementos en la lista al final
+    list.push_back(10);
+    list.push_back(20);
+    list.push_back(30);
 
-    println!("{}", my_ll);
+    println!(
+        "Lista después de push_back(10), push_back(20), push_back(30): {}",
+        list
+    );
 
-    my_ll.iter().for_each(|t| println!("&T: {}", t));
+    // Insertar elementos al principio de la lista
+    list.push_front(5);
+    list.push_front(1);
 
-    my_ll.iter_mut().for_each(|t| {
-        *t += 1;
-        println!("&mut T: {}", t)
-    });
+    println!("Lista después de push_front(5) y push_front(1): {}", list);
 
-    my_ll
-        .into_iter()
-        .for_each(|item| println!("item: {}", item));
+    // Eliminar el primer y último elemento
+    let first_removed = list.remove_first();
+    println!(
+        "Primer elemento eliminado: {:?}, Lista después de remove_first(): {}",
+        first_removed, list
+    );
 
-    //println!("{}", my_ll);
+    let last_removed = list.remove_last();
+    println!(
+        "Último elemento eliminado: {:?}, Lista después de remove_last(): {}",
+        last_removed, list
+    );
 
-    /*
-    my_ll.push_back(1);
+    // Verificar si la lista está vacía o tiene un solo elemento
+    println!("¿La lista está vacía?: {}", list.is_empty());
+    println!(
+        "¿La lista tiene un solo elemento?: {}",
+        list.has_one_element()
+    );
 
-    my_ll.push_back(2);
-    my_ll.push_back(3);
-    my_ll.push_front(0);
-    my_ll.push_front(0);
-    my_ll.push_back(3);
+    // Iterar sobre la lista de manera inmutable y mostrar los valores
+    println!("Iteración inmutable sobre la lista:");
+    for item in list.iter() {
+        print!("{} ", item);
+    }
+    println!();
 
-    println!("{}", my_ll);
+    // Iterar sobre la lista de manera mutable y modificar los elementos
+    println!("Modificando elementos de la lista en iteración mutable (+10):");
+    for item in list.iter_mut() {
+        *item += 10;
+    }
+    println!("Lista después de iter_mut(): {}", list);
 
-    let v_aux = vec![9, 8, 7, 6, 5].into_iter();
+    // Crear una lista a partir de un iterador utilizando FromIterator
+    let from_iter_list: MyDoubleLinkedList = vec![100, 200, 300].into_iter().collect();
+    println!(
+        "Lista creada a partir de un iterador (vec![100, 200, 300]): {}",
+        from_iter_list
+    );
 
-    let mut my_ll: MyDoubleLinkedList = my_ll
-        .into_iter()
-        .chain(v_aux)
-        .map(|item| item * 10)
-        .filter(|item| item % 3 == 0)
-        .collect();
+    // Uso de combinators con iteradores
+    let even_elements: Vec<i32> = list.iter().filter(|&x| x % 2 == 0).collect();
+    println!(
+        "Elementos pares en la lista (usando filter): {:?}",
+        even_elements
+    );
 
-    println!("{}", my_ll);
+    let mapped_elements: Vec<i32> = list.iter().map(|x| x * 2).collect();
+    println!(
+        "Elementos de la lista multiplicados por 2 (usando map): {:?}",
+        mapped_elements
+    );
 
-    my_ll.remove_first();
-    my_ll.remove_last();
-    my_ll.remove_first();
-    my_ll.remove_last();
+    let first_two_elements: Vec<i32> = list.iter().take(2).collect();
+    println!(
+        "Primeros dos elementos de la lista (usando take): {:?}",
+        first_two_elements
+    );
 
-    println!("{}", my_ll);
-    */
+    let skip_first_two_elements: Vec<i32> = list.iter().skip(2).collect();
+    println!(
+        "Lista sin los primeros dos elementos (usando skip): {:?}",
+        skip_first_two_elements
+    );
+
+    let enumerated_elements: Vec<(usize, i32)> = list.iter().enumerate().collect();
+    println!(
+        "Elementos enumerados de la lista (usando enumerate): {:?}",
+        enumerated_elements
+    );
+
+    // Demostración de `chain` combinando dos listas
+    let mut list_a: MyDoubleLinkedList = vec![1, 2, 3].into_iter().collect();
+    let list_b: MyDoubleLinkedList = vec![4, 5, 6].into_iter().collect();
+    list_a = list_a.into_iter().chain(list_b.into_iter()).collect();
+    println!(
+        "Lista combinada (usando chain) de [1, 2, 3] y [4, 5, 6]: {}",
+        list_a
+    );
 }
