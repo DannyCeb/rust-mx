@@ -1,6 +1,7 @@
 use expo_two::linked_list::linked_list_core::MyDoubleLinkedList;
 
 fn main() {
+    println!("=====================================================================\n");
     // Crear una lista vacía
     let mut list = MyDoubleLinkedList::new();
 
@@ -14,11 +15,15 @@ fn main() {
         list
     );
 
+    println!("\n=====================================================================\n");
+
     // Insertar elementos al principio de la lista
     list.push_front(5);
     list.push_front(1);
 
     println!("Lista después de push_front(5) y push_front(1): {}", list);
+
+    println!("\n=====================================================================\n");
 
     // Eliminar el primer y último elemento
     let first_removed = list.remove_first();
@@ -27,11 +32,15 @@ fn main() {
         first_removed, list
     );
 
+    println!("\n=====================================================================\n");
+
     let last_removed = list.remove_last();
     println!(
         "Último elemento eliminado: {:?}, Lista después de remove_last(): {}",
         last_removed, list
     );
+
+    println!("\n=====================================================================\n");
 
     // Verificar si la lista está vacía o tiene un solo elemento
     println!("¿La lista está vacía?: {}", list.is_empty());
@@ -40,12 +49,16 @@ fn main() {
         list.has_one_element()
     );
 
+    println!("\n=====================================================================\n");
+
     // Iterar sobre la lista de manera inmutable y mostrar los valores
     println!("Iteración inmutable sobre la lista:");
     for item in list.iter() {
         print!("{} ", item);
     }
     println!();
+
+    println!("\n=====================================================================\n");
 
     // Iterar sobre la lista de manera mutable y modificar los elementos
     println!("Modificando elementos de la lista en iteración mutable (+10):");
@@ -54,12 +67,16 @@ fn main() {
     }
     println!("Lista después de iter_mut(): {}", list);
 
+    println!("\n=====================================================================\n");
+
     // Crear una lista a partir de un iterador utilizando FromIterator
     let from_iter_list: MyDoubleLinkedList = vec![100, 200, 300].into_iter().collect();
     println!(
         "Lista creada a partir de un iterador (vec![100, 200, 300]): {}",
         from_iter_list
     );
+
+    println!("\n=====================================================================\n");
 
     // Uso de combinators con iteradores
     let even_elements: Vec<i32> = list.iter().filter(|&x| x % 2 == 0).collect();
@@ -68,11 +85,15 @@ fn main() {
         even_elements
     );
 
+    println!("\n=====================================================================\n");
+
     let mapped_elements: Vec<i32> = list.iter().map(|x| x * 2).collect();
     println!(
         "Elementos de la lista multiplicados por 2 (usando map): {:?}",
         mapped_elements
     );
+
+    println!("\n=====================================================================\n");
 
     let first_two_elements: Vec<i32> = list.iter().take(2).collect();
     println!(
@@ -80,17 +101,23 @@ fn main() {
         first_two_elements
     );
 
+    println!("\n=====================================================================\n");
+
     let skip_first_two_elements: Vec<i32> = list.iter().skip(2).collect();
     println!(
         "Lista sin los primeros dos elementos (usando skip): {:?}",
         skip_first_two_elements
     );
 
+    println!("\n=====================================================================\n");
+
     let enumerated_elements: Vec<(usize, i32)> = list.iter().enumerate().collect();
     println!(
         "Elementos enumerados de la lista (usando enumerate): {:?}",
         enumerated_elements
     );
+
+    println!("\n=====================================================================\n");
 
     // Demostración de `chain` combinando dos listas
     let mut list_a: MyDoubleLinkedList = vec![1, 2, 3].into_iter().collect();
@@ -100,4 +127,6 @@ fn main() {
         "Lista combinada (usando chain) de [1, 2, 3] y [4, 5, 6]: {}",
         list_a
     );
+
+    println!("\n=====================================================================\n");
 }
