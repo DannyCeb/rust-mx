@@ -1,5 +1,7 @@
 //! Ejemplificar la relación de la base binaria y hexadecimal desde un punto de vista enfocado al hardware
 
+use std::mem::transmute;
+
 /// # Funcion principal del modulo que ejemplifica codigo binario y hexadecimal
 /// Relación entre los numeros Decimales, Hexadecimales y Binarios
 /// Todo se basa en los bits
@@ -41,5 +43,21 @@ fn main() {
     println!("Decimal:     {}", u128::MAX);
     println!("Binario:     {:0128b}", u128::MAX);
     println!("Hexadecimal: {:016x}", u128::MAX);
+    */
+
+    /*
+    let num_f = 12.5;
+    let num_bits: u64 = unsafe { transmute(num_f) };
+
+    println!("{:064b}", num_bits);
+    println!("{}", num_bits);
+
+    let num_int = 233;
+    let apuntador_int = &num_int as *const i32;
+    let apuntador_int_bits: _ = unsafe { transmute(apuntador_int) };
+
+    println!("{:032b}", num_int);
+    println!("{:?}", apuntador_int);
+    println!("{:064b}", apuntador_int_bits)
     */
 }
