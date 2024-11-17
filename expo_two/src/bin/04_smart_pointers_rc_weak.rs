@@ -32,9 +32,9 @@ fn main() {
         weak_2.as_ptr()
     );
 
-    //drop(r_valor);
-    //drop(r_valor2);
-    //drop(r_valor3);
+    drop(r_valor);
+    drop(r_valor2);
+    drop(r_valor3);
     println!("\n=================================================\n");
     unsafe {
         println!("¿Qué contiene el weak? {:?}", *weak_1.into_raw());

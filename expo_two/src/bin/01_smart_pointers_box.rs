@@ -12,22 +12,53 @@ fn main() {
     println!("Sumando con ref +200: {}", ref_numero + 200);
     println!("Sumando con box +200: {}", *box_numero + 200);
 
-    /*
-    let im_ref: &i32;
+    let im_ref: *const i32;
     {
         let num = 0;
-        im_ref = &num;
+        im_ref = &num as *const i32;
     }
-    println!("num: {}", im_ref);
-    */
+    unsafe { println!("num: {}", *im_ref) };
 }
 
-/*
+pub trait Golpear {
+    fn hit(&self) -> i32;
+}
+
+pub struct Programador {
+    fuerza: i32,
+}
+
+impl Golpear for Programador {
+    fn hit(&self) -> i32 {
+        self.fuerza
+    }
+}
+
+pub struct Boxeador {
+    fuerza: i32,
+}
+
+impl Golpear for Boxeador {
+    fn hit(&self) -> i32 {
+        self.fuerza
+    }
+}
+
+pub fn generar_golpeador(f: i32) -> Box<dyn Golpear> {
+    if f > 50 {
+        Box::new(Boxeador { fuerza: f })
+    } else {
+        Box::new(Programador { fuerza: f })
+    }
+}
+
 #[cfg(test)]
 mod tests {
+    use crate::{generar_golpeador, Golpear};
+
     #[test]
     fn test_box_1() {
-        let fuerzas: [u8; 5] = [200, 10, 3, 143, 49];
+        let fuerzas: [i32; 5] = [200, 10, 3, 143, 49];
 
         let mut golpeadores = Vec::<Box<dyn Golpear>>::new();
 
@@ -44,4 +75,3 @@ mod tests {
         }
     }
 }
-    */
