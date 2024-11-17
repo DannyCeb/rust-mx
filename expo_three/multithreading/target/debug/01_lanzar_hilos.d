@@ -1,0 +1,1 @@
+/home/danny/contributing/rust/rust-mx/expo_three/multithreading/target/debug/01_lanzar_hilos: /home/danny/contributing/rust/rust-mx/expo_three/multithreading/src/bin/01_lanzar_hilos.rs /home/danny/contributing/rust/rust-mx/expo_three/multithreading/src/lib.rs
