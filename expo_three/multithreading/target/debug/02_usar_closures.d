@@ -1,1 +1,0 @@
-/home/danny/contributing/rust/rust-mx/expo_three/multithreading/target/debug/02_usar_closures: /home/danny/contributing/rust/rust-mx/expo_three/multithreading/src/bin/02_usar_closures.rs /home/danny/contributing/rust/rust-mx/expo_three/multithreading/src/lib.rs
