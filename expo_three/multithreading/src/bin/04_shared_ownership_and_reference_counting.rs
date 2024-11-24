@@ -71,10 +71,10 @@ fn main() {
 
 */
 
-/*
 // 2: Reference counted
 // Arc es como Rc pero seguro de usar en hilos
 // Mutes es como Cell pero seguro de usar en hilos
+/*
 fn main() {
     // Crea un Arc (puntero atómico de referencia) que contiene un Mutex protegiendo un vector
     let shared_value = Arc::new(Mutex::new(vec![6, 10, 3, 2, 8, 1]));
@@ -87,8 +87,9 @@ fn main() {
             let c_shared_value = shared_value.clone();
 
             // Bloquea el Mutex para acceder al vector de manera segura
-            let mut guardia = c_shared_value.lock().unwrap();
+            let mut guardia = c_shared_value.lock().unwrap(); // Si un hilo paniquea con el mutex bloqueado (Osea con el guardia vivo) este se contaminará y el metodo lock devolverá un error
 
+            //c_shared_value.lock().unwrap().push(90); // El mutes puede morir en la misma linea si usamos la referencia que toma sin guardarla en un valor
             // Simula una espera de 10 segundos
             sleep(Duration::from_secs(10));
 
@@ -98,6 +99,7 @@ fn main() {
 
         // Segundo hilo
         scope.spawn(|| {
+            sleep(Duration::from_millis(50)); // sleep para asegurarnos que el spawn anterior va antes
             println!("Impresion antes de mutar");
             // Clona el Arc para incrementar el conteo de referencias
             let c_shared_value = shared_value.clone();
