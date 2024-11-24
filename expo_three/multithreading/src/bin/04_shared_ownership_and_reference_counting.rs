@@ -73,7 +73,7 @@ fn main() {
 
 // 2: Reference counted
 // Arc es como Rc pero seguro de usar en hilos
-// Mutes es como Cell pero seguro de usar en hilos
+// Mutex es como Cell pero seguro de usar en hilos
 /*
 fn main() {
     // Crea un Arc (puntero atómico de referencia) que contiene un Mutex protegiendo un vector

@@ -1,0 +1,249 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'multithreading'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "multithreading",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '01_lanzar_hilos'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=01_lanzar_hilos",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "01_lanzar_hilos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '01_lanzar_hilos'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=01_lanzar_hilos",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "01_lanzar_hilos",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '02_usar_closures'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=02_usar_closures",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "02_usar_closures",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '02_usar_closures'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=02_usar_closures",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "02_usar_closures",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '03_scoped_threads'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=03_scoped_threads",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "03_scoped_threads",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '03_scoped_threads'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=03_scoped_threads",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "03_scoped_threads",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '04_shared_ownership_and_reference_counting'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=04_shared_ownership_and_reference_counting",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "04_shared_ownership_and_reference_counting",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '04_shared_ownership_and_reference_counting'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=04_shared_ownership_and_reference_counting",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "04_shared_ownership_and_reference_counting",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable '05_reader_writer_lock'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=05_reader_writer_lock",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "05_reader_writer_lock",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable '05_reader_writer_lock'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=05_reader_writer_lock",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "05_reader_writer_lock",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'multithreading'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=multithreading",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "multithreading",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'multithreading'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=multithreading",
+                    "--package=multithreading"
+                ],
+                "filter": {
+                    "name": "multithreading",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
