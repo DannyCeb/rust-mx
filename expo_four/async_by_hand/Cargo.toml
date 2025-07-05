@@ -1,0 +1,10 @@
+[package]
+name = "async_by_hand"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+# cargo new async_runtime --lib
+[workspace]
+members = ["async_runtime", "client", "data_layer", "server"]
