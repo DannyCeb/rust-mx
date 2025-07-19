@@ -35,6 +35,7 @@ fn main() {
     let counter_two = CountingFuture { count: -5 };
 
     let mut executor = Executor::new();
+
     let handle = executor.spawn(counter);
     let handle_two = executor.spawn(counter_two);
 
